@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+
+
+
+</head>
+
+<body style="text-align:center; background-image: url(./bg1.jpg);">
+
+    <canvas width="944" style="background-color: transparent; min-height: 600px;" height="600" id="can"></canvas>
+
+    <img style="display: none;" id="img" src="./bg2.png">
+
+    <script>
+        var x = 0;
+        var y = 0;
+        const imgg = new Image();
+
+        var canvasCtx = null;
+        const crisptCanvas = document.getElementById('can');
+        const crispContext = crisptCanvas.getContext('2d');
+
+
+        const sWidth = 3000,
+            sHeight = 3000;
+
+
+        // Draw an image on canvas
+        function scaleImage(context) {
+            const dWidth = (700);
+            const dHeight = (500);
+            context.drawImage(img, x, y, sWidth, sHeight, x, y, dWidth, dHeight);
+        };
+
+
+        document.getElementById("can").onclick = function() {
+            const rect = this.getBoundingClientRect()
+            x = event.clientX - rect.left
+            y = event.clientY - rect.top
+            scaleImage(crispContext);
+        }
+
+
+        imgg.src = "./bg2.png"
+    </script>
+</body>
+
+</html>
